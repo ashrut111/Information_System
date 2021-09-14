@@ -1,0 +1,11 @@
+<% @posts.each do |post|%>
+  <%= link_to post.title, post_path(post.id)%>
+  <%= link_to "Delete-Post", post_path(post.id), method: :delete%>
+  <%= link_to "Edit-Post", edit_post_path(post.id)%><br><br>
+<%end%>
+<br>
+<div>
+<%= link_to "Create-New-Post", new_post_path %>
+<%= link_to "Go-Back", root_path %>
+</div>
+</body>

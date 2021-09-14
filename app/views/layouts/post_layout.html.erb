@@ -1,0 +1,18 @@
+<html>
+<style>
+  body {color: white; background-color: grey}
+  h3 {color: #000000}  
+  header {text-align: center;}
+</style>
+  <header><u><h1>User Information System</h1></u></header>
+<head>
+  <h1><%unless current_user.nil?%><%= current_user.name.split(" ").first.capitalize%> , These are you your posts...<%end%></h1>  
+  <title>Information System</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+  <body class ="container-fluid">
+    <%= yield %>
+  </body>
+</html>

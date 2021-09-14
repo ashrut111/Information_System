@@ -1,0 +1,25 @@
+<html>
+<style>
+  body {color: white; background-color: grey}
+  h3 {color: #000000}  
+  header {text-align: center;}
+</style>
+  <header><u><h1>User Information System</h1></u></header>
+  <head>
+  <%
+=begin%>
+ <h1>Hi... <%unless current_user.nil?%><%= current_user.name.capitalize%><%end%></h1> 
+<%
+=end%>
+  <h1>Welcome to the User Portal...</h1>
+  <title>Information System</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

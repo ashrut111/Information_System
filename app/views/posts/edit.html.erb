@@ -1,0 +1,21 @@
+<% flash.each do |key, message| %>
+  <p><%= message %></p>
+<% end %>
+<% if @post.errors.any? %>
+<% @post.errors.full_messages do |message|%>
+<%= message %>
+<% end %>
+<% end %>
+<%= form_with scope: :post, model: @post, url: post_path, method: :patch do |form|%>
+  <br>
+  <div class="mb-3">
+  <div class="form-label"><%=form.label :title, "Title:   " %> </div>
+  <div placeholder="Title"><%=form.text_field :title%><br><br></div>
+</div>
+  
+<div class="mb-3">
+  <div class="form-label"><%=form.label :content, "Content:   " %> </div>
+  <div placeholder="Content"><%=form.text_field :content%><br><br></div>
+</div>  
+  <div> <%=form.submit "Edit Post"%></div>
+<% end %>

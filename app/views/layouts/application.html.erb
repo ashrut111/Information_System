@@ -1,0 +1,21 @@
+<html>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<style>
+  body {color: white; background-color: grey}
+  h3 {color: #000000}  
+  header {text-align: center;}
+</style>
+  <header><u><h1>User Information System</h1></u></header>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information System</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  <div class="grid">
+    <%= yield %>
+  </div>
+  </body>
+</html>

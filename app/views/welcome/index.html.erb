@@ -1,0 +1,10 @@
+<%if @welcome.nil?%>
+  <body>
+  <% flash.each do |key, message| %>
+    <p><%= message %></p>
+  <% end %>
+  <div><%=link_to "SignUp", new_user_registration_path%> / <%= link_to "Sign In", new_user_session_path%></div>
+<%else%>
+  <%= link_to "Log-Out", destroy_user_session_path, method: :delete %>
+  <%= link_to "Let's go to the posts", posts_path %>
+<%end%>

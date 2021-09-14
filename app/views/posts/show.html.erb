@@ -1,0 +1,12 @@
+<%
+=begin%>
+ <link href = "/home/ashrut/cd/Information_System/app/assets/stylesheets/application.css" rel = "stylesheet"> 
+<%
+=end%>
+<h1>Here is your post...
+</h1>
+<%= @post.title %><br><br><br>
+<%= @post.content %><br><br><br>
+<%= link_to "Delete-Post", post_path(@post.id), method: :delete%>
+<%= link_to "Edit-Post", edit_post_path%>
+<%= link_to "Go-Back", posts_path%>

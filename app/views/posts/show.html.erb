@@ -1,10 +1,8 @@
-<h1>Here is your post...
-</h1>
-<%= @post.title %><br><br><br>
-<%= @post.content %><br><br><br>
-<%if @post.images.attached?%>
-  <%= image_tag @post.images%><br><br><br>
+<%if @post.image.attached?%>
+  <div><%= image_tag @post.image, {:style => "width:32px; height:32px;"}%>
 <%end%>
+<%= @post.title%><br><br><br></div>
+<%= @post.content %><br><br><br></div>
 <%= link_to "Delete-Post", post_path(@post.id), method: :delete%>
 <%= link_to "Edit-Post", edit_post_path%>
 <%= link_to "Go-Back", posts_path%>

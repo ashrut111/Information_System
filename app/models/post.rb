@@ -3,5 +3,5 @@ class Post < ApplicationRecord
   validates_presence_of :title, :content
   validates :title, uniqueness: {scope: :user_id}
   validates :content, uniqueness: {scope: :user_id}
-  has_many_attached :images, :dependent => :destroy
+  has_one_attached :image, :dependent => :destroy
 end

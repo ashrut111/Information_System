@@ -1,14 +1,20 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+  </tr>
 <% @posts.each do |post|%>
-  <table>
-    <tr>
-      <th><%= link_to post.title, post_path(post.id)%></th><br><br>
-      <td><span class="claimedRight" maxlength="20"><%= post.content%></span></td>
-    </tr>
-  </table>  
-  <%= link_to "Delete-Post", post_path(post.id), method: :delete%>
-  <%= link_to "Edit-Post", edit_post_path(post.id)%><br><br>
+  <tr>
+    <td><%= link_to post.title, post_path(post.id)%></td><br><br>
+    <td><%=post.content.slice(0,20)%></td>
+    <td><%= link_to "Delete-Post", post_path(post.id), method: :delete%></td>
+    <td><%= link_to "Edit-Post", edit_post_path(post.id)%></td>    
+  </tr>
 <%end%>
-<br>
+</table>
+<br><br><br>
 <div>
   <%= link_to "Create-New-Post", new_post_path %>
   <%= link_to "Go-Back", root_path %>

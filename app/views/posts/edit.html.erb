@@ -16,6 +16,12 @@
 <div class="mb-3">
   <div class="form-label"><%=form.label :content, "Content:   " %> </div>
   <div placeholder="Content"><%=form.text_field :content%><br><br></div>
-</div>  
+</div>
+
+<div class="mb-3">
+  <div class="form-label"><%=form.label :image, "image:   " %> </div>
+  <div><%=form.file_field :image%><br><br></div>
+</div>
+
   <div> <%=form.submit "Edit Post"%></div>
 <% end %>

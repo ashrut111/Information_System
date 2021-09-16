@@ -20,8 +20,15 @@
 
 <div class="mb-3">
   <div class="form-label"><%=form.label :image, "image:   " %> </div>
-  <div><%=form.file_field :image%><br><br></div>
+  <div><%=form.file_field :image%></div>
 </div>
 
-  <div> <%=form.submit "Edit Post"%></div>
+<div class="mb-3">
+  <%=link_to "Delete Image", @post.image.purge%><br><br>
+</div>
+
+<div>
+<%=form.submit "Edit Post"%>
+</div>
+
 <% end %>

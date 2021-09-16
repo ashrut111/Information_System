@@ -1,3 +1,6 @@
+<% flash.each do |key, message| %>
+  <p><%= message %></p>
+<% end %>
 <%if @post.errors.any? %>
   <% @post.errors.full_messages do |message|%>
   <%= message %>
@@ -13,5 +16,5 @@
   </div>
 </div>
 <%= link_to "Delete-Post", post_path(@post.id), method: :delete, data: {confirm: "Are You Sure?"}%>
-<%= link_to "Edit-Post", edit_post_path%>
+<%= link_to "Edit-Post", edit_post_path(@post.id)%>
 <%= link_to "Go-Back", posts_path%>

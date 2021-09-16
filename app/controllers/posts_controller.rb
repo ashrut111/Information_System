@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :post_of_current_user, only: [:show, :edit, :update, :destroy]
   layout "post_layout", only: :index
-  layout "new_post_layout", only: [:new, :show, :edit]
+  layout "new_post_layout", only: [:new, :show, :edit, :destroy]
+  skip_before_action :verify_authenticity_token
   
   def index
     @posts = current_user.posts
@@ -14,7 +15,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.create(post_params)
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, notice: "Post was successfully created"
     else
       render :new
     end
@@ -39,6 +40,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.image.purge
     @post.destroy
     if @post.destroyed?
       redirect_to posts_path, notice: "Post Destroyed Successfully..."

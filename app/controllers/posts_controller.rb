@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   layout "new_post_layout", only: [:new, :show, :edit]
   
   def index
-    @posts = current_user.posts.with_attached_image
+    @posts = current_user.posts
   end
 
   def new
@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.create(post_params)
-    @post.image.attach(params[:post][:image])
     if @post.save
       redirect_to posts_path
     else
@@ -29,9 +28,11 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    @post.image.attach(params[:post][:image])
+    unless @post.image.attached?
+      @post.image.attach(params[:post][:image])
+    end
     if @post.updated_at != @post.created_at
-      redirect_to posts_path, notice: "Post Updated Successfully..."
+      redirect_to post_path(@post.id), notice: "Post Updated Successfully..."
     else
       render :edit
     end
@@ -47,7 +48,7 @@ class PostsController < ApplicationController
   end
   
   private
-
+  
   def post_of_current_user
     @post = current_user.posts.find(params[:id])
   end

@@ -8,12 +8,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.new
   end
   
   def create
-    @post = Post.create(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.create(post_params)
     @post.image.attach(params[:post][:image])
     if @post.save
       redirect_to posts_path
@@ -29,14 +28,22 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.image.attach(params[:post][:image])
     @post.update(post_params)
-    redirect_to posts_path, notice: "Post Updated Successfully.."
+    @post.image.attach(params[:post][:image])
+    if @post.updated_at != @post.created_at
+      redirect_to posts_path, notice: "Post Updated Successfully..."
+    else
+      render :edit
+    end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    if @post.destroyed?
+      redirect_to posts_path, notice: "Post Destroyed Successfully..."
+    else
+      render :show, alert: "Unable to Destroy"  
+    end
   end
   
   private

@@ -1,0 +1,22 @@
+<html>
+  <% flash.each do |key, message|%>
+    <%= message %>
+  <% end %>
+  <h1>Search for the users</h1>
+  <%=form_tag users_search_path do%>
+    <%=text_field_tag :search%>
+    <%=submit_tag "Search"%>
+  <%end%>
+
+  <%debugger%>
+  <%unless @users.blank?%>
+    <ul>
+      <% @users.each do |user|%>
+        <li>
+          <%= user.name%>
+          <%= user.email%>
+        </li>    
+      <% end %>
+    <ul>
+  <% end %>
+</html>

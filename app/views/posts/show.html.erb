@@ -1,20 +1,27 @@
-<% flash.each do |key, message| %>
-  <p><%= message %></p>
-<% end %>
+<%flash.each do |key, message|%>
+  <%if key == 'alert' %>
+    <div class = "red-flash"><%= message %></div>
+  <%elsif key == 'notice' %>
+    <div class = "green-flash"><%= message %></div>
+  <%end%>
+<%end%>
 <%if @post.errors.any? %>
   <% @post.errors.full_messages do |message|%>
   <%= message %>
-<% end %>
+  <% end %>
 <% end %>
 <div style="font-size:15; border-style:solid; border-color:black; background-color: white;">
   <%if @post.image.attached?%>
-    <%= image_tag @post.image, {:style => "width:100px; height:100px;"}%>
+    <%=image_tag(@post.image, size: "50x50")%>
   <%end%>
   <div style = "color: black;">
-    <div style = "text-align: center"><u><b><%= @post.title%></b></u></div><br><br><br>
-    <%= @post.content%><br><br><br>
+    <div style = "text-align: center; font-size: 250%;">
+      <u><b><%= @post.title%></b></u>
+    </div><br><br><br>
+    <%= @post.content%><br>
   </div>
 </div>
-<%= link_to "Delete-Post", post_path(@post.id), method: :delete, data: {confirm: "Are You Sure?"}%>
-<%= link_to "Edit-Post", edit_post_path(@post.id)%>
-<%= link_to "Go-Back", posts_path%>
+<br>
+<%= button_to "Delete-Post", post_path(@post.id),class: 'btn btn-primary', method: :delete, data: {confirm: "Are You Sure?"}%>
+<%= link_to "Edit-Post", edit_post_path(@post.id), class: 'btn btn-primary'%>
+<%= link_to "Go-Back", posts_path, class: 'btn btn-primary'%>

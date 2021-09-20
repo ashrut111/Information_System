@@ -1,6 +1,3 @@
-<% flash.each do |key, message| %>
-  <p><%= message %></p>
-<% end %>
 <% if @post.errors.any? %>
 <% @post.errors.full_messages do |message|%>
 <%= message %>
@@ -21,7 +18,7 @@
 <div class="mb-3">
   <div class="form-label"><%=form.label :image, "image:   " %> </div>
   <div><%=form.file_field :image%></div>
-</div>
+</div><br>
 
 <div class="mb-3">
   <%=link_to "Delete Image", @post.image.purge%><br><br>

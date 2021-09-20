@@ -1,9 +1,10 @@
 <html>
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <style>
-  tr:nth-child(odd) {background: #cc4c35}
-  tr:nth-child(even) {background: #84bfad}
-  table, th, td  { border: 2px solid black; }
+  .flash
+  {
+    color: green;
+  }
   body {color: white; background-color: grey}
   h3 {color: #000000}  
   header {text-align: center;}
@@ -12,12 +13,12 @@
   <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information System</title>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application'%>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>    <%= javascript_include_tag 'application'%>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </head>
   <body>
-  <div class="grid">
-    <%= yield %>
-  </div>
+    <div class="grid">
+      <%= yield%>
+    </div>
   </body>
 </html>

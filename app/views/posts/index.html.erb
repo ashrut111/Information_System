@@ -1,21 +1,26 @@
-<% flash.each do |key, message| %>
-  <p><%= message %></p>
-<% end %>
-<% @posts.each do |post|%>
-<div style="font-size:15; border-style:solid; border-color:black; background-color: white;">
-  <ul><li>
-  <%if post.image.attached?%>
-    <%= image_tag post.image, {:style => "width:22px; height:22px;"}%>
-  <%end%>
-  <%= link_to post.title, post_path(post.id)%><br><br>
-  </li></ul>
-  <div style="color:black"><%= post.content%></div>
-</div>
-<br>
+<%flash.each do |key, message| %>
+  <%if key == 'alert' %>  
+    <div class = "red-flash"><%= message%></div>
+  <%elsif key == 'notice' %>
+    <div class = "green-flash"><%= message%></div>
+  <% end %>
+  <% end %>
+<%@posts.each do |post|%>
+  <div style="font-size:15; border-style:solid; border-color:black; background-color: white;0">
+    <ul>
+      <li>
+      <%if post.image.attached?%>
+        <%=image_tag(post.image, size: "32x32")%>
+      <%end%>
+      <%= link_to post.title, post_path(post.id)%><br><br>
+      <%= post.content%>
+      </li>
+    </ul>
+  </div>
+  <br>
 <%end%>
-<br><br>
+<br>
 <div>
-  <%= link_to "Create-New-Post", new_post_path %>
-  <%= link_to "Go-Back", root_path %>
+  <%= link_to "Create-New-Post", new_post_path, class: 'btn btn-primary'%>
+  <%= link_to "Go-Back", root_path, class: 'btn btn-primary'%>
 </div>
-</body>

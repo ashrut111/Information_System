@@ -1,20 +1,26 @@
 <html>
 <style>
+  .red-flash
+  {
+    color: red;
+  }
+  .green-flash
+  {
+    color: green;
+  }
   body {color: white; background-color: grey}
   h3 {color: #000000}  
   header {text-align: center;}
 </style>
   <header><u><h1>User Information System</h1></u></header>
-  <head>
-  <h1>Welcome to the User Portal...</h1>
+<head>
+  <h1><%unless current_user.nil?%><%= current_user.name.split(" ").first.capitalize%> , These are you your posts...<%end%></h1>  
   <title>Information System</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  </head>
-  <body>
+</head>
+  <body class ="container-fluid">
     <%= yield %>
   </body>
 </html>

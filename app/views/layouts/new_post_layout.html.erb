@@ -1,5 +1,13 @@
 <html>
 <style>
+  .red-flash
+  {
+    color: red;
+  }
+  .green-flash
+  {
+    color: green;
+  }
   body {color: white; background-color: grey}
   h3 {color: pink}  
   header {text-align: center;}
@@ -9,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information System</title>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "application"%>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </head>
   <div class="grid">
     <%= yield %>

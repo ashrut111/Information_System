@@ -1,0 +1,9 @@
+<h1>Here are your Friend Requests</h1>
+<% @users.each do |user|%>
+  <ul>
+    <li>
+      <%= user.name%>
+      <%= button_to "Accept", accept_request_path, method: :get%>
+    </li>
+  </ul>
+<% end%>

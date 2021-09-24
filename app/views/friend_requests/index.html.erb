@@ -1,0 +1,13 @@
+<h3>Here are the users who want to be your friend...</h3>
+  <ul>
+    <% @friend_requests.each do |friend_request|%>
+      <li>
+        <%= friend_request.user.name%>
+          <%= link_to "Accept", user_friend_request_path(current_user.id, friend_request.sender_id), method: :patch %>
+          <%= link_to "Reject", user_friend_request_path(current_user.id, friend_request.sender_id), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+<br>
+<br>
+<%= link_to "Go-Back", root_path%>

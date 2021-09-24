@@ -28,6 +28,8 @@ gem 'bootstrap', '~> 5.1.0'
 
 gem 'jquery-rails'
 
+gem 'hirb', '~> 0.7.3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

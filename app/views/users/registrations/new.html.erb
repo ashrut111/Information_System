@@ -4,7 +4,7 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name %><br />
     <%= f.text_field :name%>
   </div>
 
@@ -23,7 +23,12 @@
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label "Profile-Picture" %><br>
+    <%= f.file_field :image %><br>
   </div>
 
   <div class="actions">

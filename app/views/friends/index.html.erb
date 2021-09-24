@@ -1,0 +1,10 @@
+<h1>Here are your friends...</h1>
+<% @friends.each do |friend|%>
+  <ul>
+    <li>
+      <%= friend.name %>
+      <%= button_to "Unfriend", user_friend_request_path(current_user.id, friend.id) %>
+    </li>
+  </ul>
+<%end%>
+<%= button_to "Go-Back", root_path, method: :get%>

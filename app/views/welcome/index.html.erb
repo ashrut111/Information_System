@@ -1,16 +1,21 @@
-<%if @welcome.nil?%>
-  <%flash.each do |key, message|%>
-    <p><%= message %></p>
-  <%end%>
-  <%=link_to "SignUp", new_user_registration_path%> / <%= link_to "Sign In", new_user_session_path%>
-<%else%>
-  <%= link_to "Log-Out", destroy_user_session_path, method: :delete%><br>
-  <%= button_to "Let's go to the posts", posts_path, method: :get%>
-  <%= button_to "Search_Users", users_index_path, method: :get %>
-  <%= button_to "Friend_Requests", users_friend_requests_path, method: :get %> 
-  
-  <%=form_with user_path(current_user.id), method: :patch do |form|%>
-    <%=form.file_field :image%>
-    <%=form.submit "Upload Profile Picture" %>
-  <%end%>
-<%end%>
+<% flash.each do |key, message|%>
+  <p><%= message %></p>
+<% end%>
+<% if @welcome.nil?%>
+  <%= link_to "SignUp", new_user_registration_path%> / <%= link_to "Sign In", new_user_session_path%>
+<% else%>
+  <% if current_user.image.attached?%>
+    <%= image_tag current_user.image, size: "50x50"%>
+  <% end%>
+<div>Hi... <b><%=current_user.name%></b></div><br>
+
+<%= button_to "Let's go to the posts", posts_path, method: :get%>
+<%= button_to "Search_Users", users_path, method: :get %>
+<%= button_to "Friend-Request", user_friend_requests_path(current_user.id), method: :get %>
+<%= button_to "Show-all-friends", friends_index_path, method: :get %>
+<%= form_with url: user_path(current_user.id), method: :patch do |form|%>
+  <%=form.file_field :image%>
+  <%=form.submit "Upload/Change Profile Picture" %>
+<% end%>
+<%= link_to "Log-Out", destroy_user_session_path, method: :delete%><br>
+<% end%>

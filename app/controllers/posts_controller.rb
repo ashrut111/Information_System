@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     @post.image.purge
     @post.destroy
     if @post.destroyed?
-      redirect_to posts_path, notice: "Post Deleted Successfully..."
+      redirect_to posts_path, notice: "Post Deleted Successfully"
     else
       render :show, alert: "Unable to Destroy"  
     end

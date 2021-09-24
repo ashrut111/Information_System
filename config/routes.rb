@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'users_index', to: "users#index"
-  post 'users_index', to: "users#index"
-  devise_for :users
+  get 'friends/index'
   root "welcome#index"
-  resources :welcome, only: [:index]
+  devise_for :users
   resources :posts
-  get 'users_friend_requests', to: "users#friend_requests"
-  get 'accept_request', to: "users#accept_request"
-  resources :users
+  resources :users do
+    resources :friend_requests
+  end
+  get 'welcome_index', to: "welcome#index"
 end
